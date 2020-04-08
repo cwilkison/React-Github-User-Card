@@ -1,8 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, CardBody, CardTitle, CardText, CardImg, CardSubtitle } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, CardImg, CardSubtitle, CardHeader } from 'reactstrap';
+import styled from "styled-components";
 
-
+const SpaceBorder = styled.div`
+  color: grey;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display:flex;
+  flex-direction:column;
+  width: 75%;
+  background: lightblue;
+`;
 
 function Followers(props) {
   // you will need a place to store your state in this component.
@@ -13,14 +24,22 @@ function Followers(props) {
       <>
       {props.followers.map(follower => (
                   <div key={follower.id}>
-                    <CardImg top width="100%" src={follower.avatar_url} />
-                    <CardSubtitle>UserName: {follower.login}</CardSubtitle>
-                    <CardSubtitle>
+                    <SpaceBorder>
+                    <Card>
+                    <CardBody>
+                    <CardImg className="cards" src={follower.avatar_url} />
+                    <CardHeader>UserName: {follower.login}</CardHeader>
+                    <CardText>
                       Following: {follower.following_url.length}
-                    </CardSubtitle>
-                    <CardSubtitle>
+                    </CardText>
+                    <CardText>
                       Followers: {follower.followers_url.length}
-                    </CardSubtitle>
+                    </CardText>
+                    </CardBody>
+                    </Card>
+                    </SpaceBorder>
+
+
                   </div>
                 ))}
       </>

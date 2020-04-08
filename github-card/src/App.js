@@ -1,8 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 import Followers from './Followers';
-import { CardImg } from 'reactstrap';
+import { CardImg, CardHeader, Card, CardBody, CardText } from 'reactstrap';
+import styled from "styled-components";
+import './App.css';
 
+
+
+const SpaceBorder = styled.div`
+  color: grey;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display:flex;
+  flex-direction:column;
+  width: 75%;
+  background: lightblue;
+  padding-bottom: 5%;
+`;
 
 
 class App extends React.Component {
@@ -43,11 +59,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Github User: {this.state.user.name}</h1>
-        <h3>Location: {this.state.user.location}</h3>
-        <h3>Following: {this.state.user.following}</h3>
-        <h3>Followers: {this.state.user.followers}</h3>
-        <CardImg width='25%' src={this.state.user.avatar_url}></CardImg>
+        <SpaceBorder>
+        <h1>Cole's GitHub Friends and Followers</h1>
+        <Card>
+        <CardBody>
+        <CardHeader>Github User: {this.state.user.name}</CardHeader>
+        <CardText>Location: {this.state.user.location}</CardText>
+        <CardText>Following: {this.state.user.following}</CardText>
+        <CardText>Followers: {this.state.user.followers}</CardText>
+        <CardImg className="cards" src={this.state.user.avatar_url}></CardImg>
+        </CardBody>
+        </Card>
+        </SpaceBorder>
         <Followers followers={this.state.followers}/>
       </div>
     );

@@ -1,3 +1,15 @@
+.cards{
+ border-radius: 25px;
+}
+
+h1{
+  color: black;
+}
+
+body{
+  background: rgb(119, 119, 250);
+}
+
 .App {
   text-align: center;
 }
